@@ -1,5 +1,12 @@
 # 🏠 Hostel Management System
 
+## 🌐 **LIVE DEMO**
+**🔗 Live Application**: [https://hostel-management-ngvysgyfy-sanskar-sains-projects.vercel.app](https://hostel-management-ngvysgyfy-sanskar-sains-projects.vercel.app)
+
+**👤 Demo Credentials:**
+- **Student**: `student@demo.com` / `password123`
+- **Admin**: `admin@demo.com` / `password123`
+
 A comprehensive web-based hostel management application built with React and Node.js, featuring student management, room allocation, payment tracking, outpass generation, visitor management, maintenance requests, and emergency services.
 
 ## ✨ Features
@@ -201,6 +208,23 @@ hostel-management-app/
 - Input validation
 - SQL injection prevention
 - XSS protection
+
+## 🌐 Deployment
+
+### Live Application
+The application is deployed on **Vercel** and is accessible at:
+**[https://hostel-management-ngvysgyfy-sanskar-sains-projects.vercel.app](https://hostel-management-ngvysgyfy-sanskar-sains-projects.vercel.app)**
+
+### Deploy Your Own
+1. **Fork this repository**
+2. **Connect to Vercel**: Import your forked repository
+3. **Configure**: Set root directory to `client`
+4. **Deploy**: Vercel will automatically build and deploy
+
+### Environment Configuration
+- **Frontend**: Uses mock data fallback for demo purposes
+- **Production Ready**: API service with graceful fallback
+- **Auto-Deploy**: Connected to GitHub for automatic deployments
 
 ## 📊 Database Schema
 
