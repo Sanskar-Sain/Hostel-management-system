@@ -1,0 +1,28 @@
+{
+  "name": "hostel-management-app",
+  "version": "1.0.0",
+  "description": "A full-stack hostel management application",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "client": "cd client && npm start",
+    "server": "nodemon server/index.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["hostel", "management", "node", "react"],
+  "author": "Your Name",
+  "license": "MIT"
+}
