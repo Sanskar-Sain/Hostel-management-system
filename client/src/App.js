@@ -28,11 +28,16 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('userType');
-    localStorage.removeItem('userEmail');
-    setIsAuthenticated(false);
-    setUserType('student');
+    // Show confirmation dialog
+    const confirmLogout = window.confirm('Are you sure you want to logout?');
+    
+    if (confirmLogout) {
+      localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('userType');
+      localStorage.removeItem('userEmail');
+      setIsAuthenticated(false);
+      setUserType('student');
+    }
   };
 
   if (!isAuthenticated) {
