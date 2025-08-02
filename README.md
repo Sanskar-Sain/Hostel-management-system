@@ -1,43 +1,102 @@
+
 # 🏠 Hostel Management System
 
-## 🌐 **LIVE DEMO**
-**🔗 Live Application**: [https://hostel-management-rxq5ps1st-sanskar-sains-projects.vercel.app](https://hostel-management-rxq5ps1st-sanskar-sains-projects.vercel.app)
+## 🌐 Live Demo
+**🔗 [Live Application on Vercel](https://hostel-management-rxq5ps1st-sanskar-sains-projects.vercel.app)**
 
-**👤 Demo Credentials:**
-- **Student**: `student@demo.com` / `password123`
-- **Admin**: `admin@demo.com` / `password123`
+## 📋 Overview
+A modern, responsive web application for managing hostel operations. Built with React (frontend) and Node.js/Express with SQLite (backend).
 
-A modern, responsive web application for managing hostel operations with a beautiful UI and comprehensive features.
+## ✨ Main Features
+- Student management: add, edit, view, and delete students
+- Room management: add, view rooms
+- Payment tracking: add, view payments
+- Dashboard with statistics (students, rooms, revenue, available rooms)
+- Role-based login (Student/Admin) [Demo only, not secure]
+- Responsive UI with light/dark mode
 
-## ✨ Features
+## 🚀 Tech Stack
+**Frontend:** React 19, React Router, CSS3, Google Fonts
+**Backend:** Node.js, Express.js, SQLite
 
-### 🎨 Modern UI/UX
-- **Modern Design** with Poppins & Inter fonts
-- **Dark/Light Theme** toggle with smooth transitions
-- **Responsive Design** that works on all devices
-- **Beautiful Animations** and hover effects
-- **Custom Icons** and visual elements
+## 📦 Getting Started
 
-### 👥 User Management
-- **Student & Admin** role-based access
-- **User Authentication** with secure login
-- **Profile Management** with avatar display
-- **Custom Logout** confirmation modal
+### Prerequisites
+- Node.js (v16 or higher)
+- npm
 
-### 📊 Dashboard & Analytics
-- **Real-time Statistics** with visual cards
-- **Analytics Overview** with progress bars
-- **Quick Actions** for common tasks
-- **Performance Metrics** and insights
+### Installation & Running Locally
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Sanskar-Sain/Hostel-management-system.git
+   cd Hostel-management-system
+   ```
+2. **Install backend dependencies**
+   ```bash
+   npm install
+   ```
+3. **Install frontend dependencies**
+   ```bash
+   cd client
+   npm install
+   ```
+4. **Start backend server** (from root directory)
+   ```bash
+   npm start
+   ```
+5. **Start frontend** (in another terminal, from `client` directory)
+   ```bash
+   npm start
+   ```
+6. **Access the app:**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
 
-### 🏠 Core Features
-- **Student Management** - Add, edit, view students
-- **Room Management** - Allocate and track rooms
-- **Payment Tracking** - Monitor fees and payments
-- **Visitor Management** - Track guest entries
-- **Maintenance Requests** - Handle repair requests
-- **Emergency Alerts** - Critical notifications
-- **Outpass System** - Student exit permissions
+## �️ Project Structure
+```
+hostel-management-app/
+├── client/           # React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── App.js
+│   └── package.json
+├── server/           # Node.js backend
+│   └── index.js
+├── package.json      # Root scripts & dependencies
+└── README.md
+```
+
+## 🛠️ Available Scripts
+
+**Root directory:**
+- `npm start` — Start backend server
+- `npm install` — Install backend dependencies
+
+**Client directory:**
+- `npm start` — Start React development server
+- `npm run build` — Build frontend for production
+- `npm test` — Run frontend tests
+
+## 🎨 UI & UX
+- Responsive design (desktop, tablet, mobile)
+- Light/Dark mode toggle
+- Modern, clean interface
+
+## ⚠️ Notes
+- Demo login is for demonstration only; authentication is not secure for production.
+- No visitor, maintenance, emergency, or outpass modules are present in this codebase.
+- No LICENSE file is present. Add one if you wish to open source the project.
+
+## 🙏 Acknowledgments
+- [React](https://react.dev/)
+- [Express](https://expressjs.com/)
+- [SQLite](https://www.sqlite.org/)
+- [Vercel](https://vercel.com/)
+
+---
+**Made with ❤️ by the Hostel Management Team**
 
 ## 🚀 Tech Stack
 
