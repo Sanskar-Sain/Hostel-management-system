@@ -5,6 +5,7 @@ const Students = () => {
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,10 +19,13 @@ const Students = () => {
 
   const fetchStudents = async () => {
     try {
+      setLoading(true);
       const response = await axios.get('http://localhost:5000/api/students');
       setStudents(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching students:', error);
+      setLoading(false);
     }
   };
 
@@ -83,18 +87,31 @@ const Students = () => {
     });
   };
 
+  if (loading) {
+    return <div className="loading">Loading students...</div>;
+  }
+
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h1>Students Management</h1>
+        <div>
+          <h1 style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+            👨‍🎓 Students Management
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
+            Manage student registrations and information
+          </p>
+        </div>
         <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+          <span>➕</span>
           Add New Student
         </button>
       </div>
 
       <div className="card">
         <div className="card-header">
-          All Students
+          <span style={{ marginRight: '0.5rem' }}>📋</span>
+          All Students ({students.length})
         </div>
         <div className="card-body">
           <div className="table-container">
@@ -114,40 +131,112 @@ const Students = () => {
               <tbody>
                 {students.map(student => (
                   <tr key={student.id}>
-                    <td>{student.id}</td>
-                    <td>{student.name}</td>
-                    <td>{student.email}</td>
-                    <td>{student.phone}</td>
-                    <td>{student.room_number || 'Not assigned'}</td>
-                    <td>{student.check_in_date}</td>
                     <td>
                       <span style={{ 
-                        color: student.status === 'active' ? '#2ecc71' : '#e74c3c',
-                        fontWeight: 'bold'
+                        background: 'var(--bg-tertiary)', 
+                        padding: '0.25rem 0.5rem', 
+                        borderRadius: '4px',
+                        fontSize: '0.875rem',
+                        fontWeight: '600'
                       }}>
-                        {student.status}
+                        #{student.id}
                       </span>
                     </td>
                     <td>
-                      <button 
-                        className="btn btn-secondary" 
-                        onClick={() => handleEdit(student)}
-                      >
-                        Edit
-                      </button>
-                      <button 
-                        className="btn btn-danger" 
-                        onClick={() => handleDelete(student.id)}
-                      >
-                        Delete
-                      </button>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span style={{ fontSize: '1.25rem' }}>👤</span>
+                        <span style={{ fontWeight: '600' }}>{student.name}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>📧</span>
+                        {student.email}
+                      </div>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>📞</span>
+                        {student.phone}
+                      </div>
+                    </td>
+                    <td>
+                      {student.room_number ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <span>🛏️</span>
+                          <span style={{ 
+                            background: 'var(--card-blue)', 
+                            color: '#1d4ed8',
+                            padding: '0.25rem 0.5rem', 
+                            borderRadius: '4px',
+                            fontSize: '0.875rem',
+                            fontWeight: '600'
+                          }}>
+                            Room {student.room_number}
+                          </span>
+                        </div>
+                      ) : (
+                        <span style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                          Not assigned
+                        </span>
+                      )}
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>📅</span>
+                        {student.check_in_date || 'N/A'}
+                      </div>
+                    </td>
+                    <td>
+                      <span style={{ 
+                        color: student.status === 'active' ? '#10b981' : '#ef4444',
+                        fontWeight: '600',
+                        padding: '0.25rem 0.75rem',
+                        borderRadius: '12px',
+                        fontSize: '0.875rem',
+                        background: student.status === 'active' ? '#dcfce7' : '#fef2f2'
+                      }}>
+                        {student.status === 'active' ? '✅ Active' : '❌ Inactive'}
+                      </span>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', gap: '0.5rem' }}>
+                        <button 
+                          className="btn btn-secondary" 
+                          onClick={() => handleEdit(student)}
+                          title="Edit student information"
+                        >
+                          <span>✏️</span>
+                          Edit
+                        </button>
+                        <button 
+                          className="btn btn-danger" 
+                          onClick={() => handleDelete(student.id)}
+                          title="Delete student"
+                        >
+                          <span>🗑️</span>
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
                 {students.length === 0 && (
                   <tr>
-                    <td colSpan="8" style={{ textAlign: 'center', padding: '2rem' }}>
-                      No students found. Add your first student!
+                    <td colSpan="8" style={{ textAlign: 'center', padding: '3rem' }}>
+                      <div style={{ color: 'var(--text-muted)' }}>
+                        <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>👨‍🎓</span>
+                        <h3 style={{ marginBottom: '0.5rem', color: 'var(--text-primary)' }}>No students found</h3>
+                        <p>Add your first student to get started!</p>
+                        <button 
+                          className="btn btn-primary" 
+                          onClick={() => setShowModal(true)}
+                          style={{ marginTop: '1rem' }}
+                        >
+                          <span>➕</span>
+                          Add First Student
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 )}
@@ -161,58 +250,81 @@ const Students = () => {
         <div className="modal">
           <div className="modal-content">
             <div className="modal-header">
-              <h2>{editingStudent ? 'Edit Student' : 'Add New Student'}</h2>
+              <h2>
+                <span style={{ marginRight: '0.5rem' }}>
+                  {editingStudent ? '✏️' : '➕'}
+                </span>
+                {editingStudent ? 'Edit Student' : 'Add New Student'}
+              </h2>
               <button className="close-btn" onClick={resetForm}>×</button>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Name</label>
+                <label>
+                  <span style={{ marginRight: '0.5rem' }}>👤</span>
+                  Full Name
+                </label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   className="form-control"
+                  placeholder="Enter student's full name"
                   required
                 />
               </div>
               <div className="form-group">
-                <label>Email</label>
+                <label>
+                  <span style={{ marginRight: '0.5rem' }}>📧</span>
+                  Email Address
+                </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   className="form-control"
+                  placeholder="student@example.com"
                   required
                 />
               </div>
               <div className="form-group">
-                <label>Phone</label>
+                <label>
+                  <span style={{ marginRight: '0.5rem' }}>📞</span>
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   className="form-control"
+                  placeholder="+1 (555) 123-4567"
                   required
                 />
               </div>
               <div className="form-group">
-                <label>Room Number (Optional)</label>
+                <label>
+                  <span style={{ marginRight: '0.5rem' }}>🛏️</span>
+                  Room Number (Optional)
+                </label>
                 <input
                   type="text"
                   name="room_number"
                   value={formData.room_number}
                   onChange={handleChange}
                   className="form-control"
+                  placeholder="e.g., 101, 2A, etc."
                 />
               </div>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end', marginTop: '2rem' }}>
                 <button type="button" className="btn btn-secondary" onClick={resetForm}>
+                  <span>❌</span>
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-success">
+                  <span>{editingStudent ? '💾' : '➕'}</span>
                   {editingStudent ? 'Update' : 'Add'} Student
                 </button>
               </div>
