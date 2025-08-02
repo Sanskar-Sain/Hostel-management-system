@@ -1,5 +1,12 @@
 # 🏠 Hostel Management System
 
+## 🌐 **LIVE DEMO**
+**🔗 Live Application**: [https://hostel-management-rxq5ps1st-sanskar-sains-projects.vercel.app](https://hostel-management-rxq5ps1st-sanskar-sains-projects.vercel.app)
+
+**👤 Demo Credentials:**
+- **Student**: `student@demo.com` / `password123`
+- **Admin**: `admin@demo.com` / `password123`
+
 A modern, responsive web application for managing hostel operations with a beautiful UI and comprehensive features.
 
 ## ✨ Features
@@ -56,8 +63,8 @@ A modern, responsive web application for managing hostel operations with a beaut
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/hostel-management-app.git
-   cd hostel-management-app
+   git clone https://github.com/Sanskar-Sain/Hostel-management-system.git
+   cd Hostel-management-system
    ```
 
 2. **Install dependencies**
