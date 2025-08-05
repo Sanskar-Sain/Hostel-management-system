@@ -1,12 +1,13 @@
 # 🏨 Hostel Management System
 
 A modern Hostel Management System built with React and Node.js, designed to streamline hostel operations for administrators and students.  
-**🌐 [Live Demo on Vercel](https://hostel-management-five.vercel.app/)**
+**🌐 [Live Demo on Vercel](https://hostel-management-app-one.vercel.app/)**
 
 ---
 
-![Dashboard Screenshot](client/public/dashboard-screenshot.png)
+![Dashboard Screenshot](<img width="1813" height="945" alt="image" src="https://github.com/user-attachments/assets/8c5bec66-cf4a-4b40-971c-310d9b2403ac" />)
 <!-- Add your own screenshot path -->
+
 
 ---
 
